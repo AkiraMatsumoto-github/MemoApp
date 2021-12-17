@@ -20,20 +20,20 @@ const styles = StyleSheet.create({
     backgroundColor: '#467FD3',
     justifyContent: 'flex-end',
   },
-      appbarInner: {
-        alignItems: 'center',
-      },
-      appbarRight: {
-        position: 'absolute',
-        right: 19,
-        bottom: 12,
-        color: 'rgba(255,255,255,0.8)',
-      },
-      appbarCenter: {
-        marginBottom: 8,
-        fontSize: 22,
-        color: '#ffffff',
-        lineHeight: 32,
-        fontWeight: 'bold',
-      },
-})
+  appbarInner: {
+    alignItems: 'center',
+  },
+  appbarRight: {
+    position: 'absolute',
+    right: 19,
+    bottom: 12,
+    color: 'rgba(255,255,255,0.8)',
+  },
+  appbarCenter: {
+    marginBottom: 8,
+    fontSize: 22,
+    color: '#ffffff',
+    lineHeight: 32,
+    fontWeight: 'bold',
+  },
+});
