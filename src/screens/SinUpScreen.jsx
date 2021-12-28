@@ -2,9 +2,8 @@ import React, { useState } from 'react';
 import {
   View, Text, StyleSheet, TextInput, TouchableOpacity,
 } from 'react-native';
-import Button from '../components/Button';
 import firebase from 'firebase';
-
+import Button from '../components/Button';
 
 // eslint-disable-next-line react/function-component-definition
 export default function SignUpScreen(props) {

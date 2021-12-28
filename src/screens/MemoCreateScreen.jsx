@@ -1,6 +1,6 @@
 import React from 'react';
 import {
-  View, Text , StyleSheet, TextInput , KeyboardAvoidingView ,
+  View, StyleSheet, TextInput, KeyboardAvoidingView,
 } from 'react-native';
 import CircleButton from '../components/CircleButton';
 
@@ -10,7 +10,11 @@ export default function MemoCreateScreen(props) {
   return (
     <KeyboardAvoidingView style={styles.container} behavior="height">
       <View style={styles.inputContainer}>
-        <TextInput value="aaa" multiline style={styles.input}/>
+        <TextInput
+          value="aaa"
+          multiline
+          style={styles.input}
+        />
       </View>
       <CircleButton
         name="check"
@@ -21,18 +25,18 @@ export default function MemoCreateScreen(props) {
 }
 
 const styles = StyleSheet.create({
-  container:{
+  container: {
     flex: 1,
   },
-  inputContainer:{
+  inputContainer: {
     paddingHorizontal: 27,
     paddingVertical: 32,
     flex: 1,
   },
-  input:{
+  input: {
     flex: 1,
     textAlignVertical: 'top',
     fontSize: 16,
     lineHeight: 24,
-  }
+  },
 });
