@@ -4,6 +4,7 @@ import {
 } from 'react-native';
 import Button from '../components/Button';
 import Loading from '../components/Loading';
+import { translateErrors } from '../utils';
 import firebase from 'firebase';
 
 // eslint-disable-next-line react/function-component-definition
@@ -39,7 +40,8 @@ export default function LogInScreen(props) {
         });
       })
       .catch((error) => {
-        Alert.alert(error.code);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       })
       .then(() => {
         setLoading(false);
