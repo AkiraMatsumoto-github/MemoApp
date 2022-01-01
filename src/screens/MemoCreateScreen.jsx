@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import {
-  View, StyleSheet, TextInput, KeyboardAvoidingView,
+  View, StyleSheet, TextInput, KeyboardAvoidingView, Alert,
 } from 'react-native';
 import firebase from 'firebase';
 import CircleButton from '../components/CircleButton';
+import { translateErrors } from '../utils';
 
 // eslint-disable-next-line react/function-component-definition
 export default function MemoCreateScreen(props) {
@@ -11,18 +12,18 @@ export default function MemoCreateScreen(props) {
   const [bodyText, setBodyText] = useState('');
 
   function handlePress() {
-    const { currentUser } =firebase.auth();
+    const { currentUser } = firebase.auth();
     const db = firebase.firestore();
     const ref = db.collection(`users/${currentUser.uid}/memos`);
     ref.add({
       bodyText,
       updatedAt: new Date(),
     })
-      .then((docRef) => {
-        console.log('Created!', docRef.id);
+      .then(() => {
       })
       .catch((error) => {
-        console.log('Error!',error);
+        const errorMsg = translateErrors(error.code);
+        Alert.alert(errorMsg.title, errorMsg.description);
       });
     navigation.goBack();
   }
@@ -35,11 +36,12 @@ export default function MemoCreateScreen(props) {
           value={bodyText}
           multiline
           style={styles.input}
-          onChangeText={(text) => {setBodyText(text); }}
+          onChangeText={(text) => { setBodyText(text); }}
         />
       </View>
       <CircleButton
         name="check"
+        // eslint-disable-next-line react/jsx-no-bind
         onPress={handlePress}
       />
     </KeyboardAvoidingView>

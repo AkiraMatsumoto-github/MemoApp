@@ -29,7 +29,7 @@ export default function MemoList(props) {
           style: 'destructive',
           onPress: () => {
             ref.delete().catch(() => {
-              Alert.alert('削除に失敗しました')
+              Alert.alert('削除に失敗しました');
             });
           },
         },
@@ -43,14 +43,14 @@ export default function MemoList(props) {
         style={styles.memoListItem}
         onPress={() => { navigation.navigate('MemoDetail',{ id: item.id }); }}
       >
-        <View>
+        <View style={styles.memoInner}>
           <Text style={styles.memoListTitle} numberOfLines={1}>{item.bodyText}</Text>
           <Text style={styles.memoListItemDate}>{dateToString(item.updatedAt)}</Text>
         </View>
         <TouchableOpacity
           style={styles.memoDelete}
           onPress={() => {deleteMemo(item.id)}}
-          　>
+        >
           <Feather name="x" size={16} color="#b0b0b0" />
         </TouchableOpacity>
       </TouchableOpacity>
@@ -88,6 +88,9 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     borderBottomWidth: 1,
     borderColor: 'rgba(0,0,0,0.15)',
+  },
+  memoInner: {
+    flex: 1,
   },
   memoListTitle: {
     fontSize: 16,
